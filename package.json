@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-tracking-service",
+  "version": "1.0.0",
+  "description": "A node.js",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "nhale@ups.com",
+  "license": "MIT",
+  "dependencies": {
+    "googlemaps": "^1.11.1",
+    "mocha": "^3.0.2",
+    "mqtt": "^1.14.1"
+  }
+}
