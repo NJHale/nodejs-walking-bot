@@ -3,7 +3,7 @@
 // Import the Package prototype object
 var Package = require('./../models/package.js').Package;
 
-var interval = null;
+var intervals = [];
 
 // Event listener for child process
 process.on('message', (msg) => {
@@ -13,9 +13,8 @@ process.on('message', (msg) => {
   if (cmd[0] === 'stop') {
     console.log(`[${process.pid}] : stop msg received, stopping...`);
     // stop walking
-    if (interval != null) {
-      clearInterval(interval);
-      interval = null;
+    if (interval.length > 0) {
+      clearInterval(intervals.pop());
     }
     console.log(`[${process.pid}] : walking stopped!`);
   }
@@ -49,11 +48,11 @@ process.on('message', (msg) => {
 function walk(unit, dt, origin) {
   console.log(JSON.stringify(origin));
 
-  interval = setInterval(() => {
+  intervals.push(setInterval(() => {
     next = step(unit, dt, origin);
     process.send(JSON.stringify(next));
     origin = next;
-  }, dt);
+  }, dt));
 }
 
 /**
