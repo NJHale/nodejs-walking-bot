@@ -6,6 +6,9 @@ var mqtt = require('mqtt');
 
 var Package = require('./models/package.js').Package;
 
+// Test change
+console.log('Hello World!');
+
 // Collect relative environment variables
 const MQTT_PKG_HOST = process.env.MQTT_PKG_HOST || 'localhost',
       MQTT_PKG_TOPIC = process.env.MQTT_PKG_TOPIC || 'pkgTopic';
