@@ -27,7 +27,9 @@ process.on('message', (msg) => {
       origin = new Package(origin.pkgId, origin.position, origin.velocity,
         origin.acceleration, origin.tempurature, origin.time);
       var unit = cmd[2];
-      var dt = cmd[3];
+      // var dt = cmd[3];
+      var dt = Math.floor(Math.random() * (2500 - 250) + 250);
+
       walk(unit, dt, origin);
     } catch (err) {
       console.error(`[${process.pid}] : There was some issue attempting to start a walk with ${msg}`);
@@ -42,7 +44,7 @@ process.on('message', (msg) => {
 /**
 * Walks continuously over an unbounded region
 * @param {number} unit Unit of lat/lon distance by which to walk
-* @param {number} interval Inteval in ms to fire the step function
+* @param {number} dt Inteval in ms to fire the step function
 * @param {Package} origin Package with starting location
 */
 function walk(unit, dt, origin) {
