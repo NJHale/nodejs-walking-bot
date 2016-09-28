@@ -26,7 +26,8 @@ process.on('message', (msg) => {
       // Recreate origin with prototype Package
       origin = new Package(origin.pkgId, origin.position, origin.velocity,
         origin.acceleration, origin.tempurature, origin.time);
-      var unit = cmd[2];
+      // var unit = cmd[2];
+      var unit = Math.random() * (.049 - .001) + .001;
       // var dt = cmd[3];
       var dt = Math.floor(Math.random() * (2500 - 250) + 250);
 
